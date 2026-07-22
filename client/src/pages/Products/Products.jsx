@@ -1,31 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "./Products.css";
 
-// onAddToCart is passed down from App.jsx
-function Products({ onAddToCart }) {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+// allProducts and onAddToCart are passed from App.jsx
+function Products({ allProducts, onAddToCart }) {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("default");
 
-  // Fetch products once when the page loads
-  useEffect(() => {
-    fetch("http://localhost:5000/api/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+  const products = allProducts || [];
+  const loading = false;
 
-  // Filter by search text
   let filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Sort based on dropdown selection
   if (sortBy === "lowToHigh") {
     filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
   } else if (sortBy === "highToLow") {
@@ -67,11 +55,7 @@ function Products({ onAddToCart }) {
       ) : (
         <div className="products-grid">
           {filteredProducts.map((product) => (
-            <ProductCard
-              key={product._id}
-              product={product}
-              onAddToCart={onAddToCart}
-            />
+            <ProductCard key={product._id} product={product} onAddToCart={onAddToCart} />
           ))}
         </div>
       )}

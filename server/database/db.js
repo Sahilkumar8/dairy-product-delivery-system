@@ -1,15 +1,17 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-// This function connects to our MongoDB database
-function connectDB() {
-  mongoose
-    .connect("mongodb://127.0.0.1:27017/dairyDeliveryDB")
-    .then(() => {
-      console.log("MongoDB connected successfully");
-    })
-    .catch((error) => {
-      console.log("MongoDB connection failed:", error.message);
-    });
-}
+const connectDB = async () => {
+  try {
+    console.log("MONGO_URI:", process.env.MONGO_URI);
+
+    await mongoose.connect(process.env.MONGO_URI);
+
+    console.log("✅ MongoDB Connected Successfully");
+  } catch (error) {
+    console.error("❌ MongoDB Connection Error:", error.message);
+    process.exit(1);
+  }
+};
 
 module.exports = connectDB;

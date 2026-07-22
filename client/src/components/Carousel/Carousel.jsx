@@ -1,82 +1,94 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Carousel.css";
 
-// Add your own images to src/assets/images and update this array
 const slides = [
   {
-    image: "/src/assets/images/slide1.jpg",
-    title: "Fresh Milk Everyday",
-    subtitle: "Delivered before 7 AM, straight from the farm",
+    image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=1200",
+    badge: "🥛 100% Fresh & Pure",
+    title: "Farm Fresh Milk, Delivered Daily",
+    subtitle: "Straight from trusted farms to your doorstep every morning",
+    cta: "Shop Milk",
   },
   {
-    image: "/src/assets/images/slide2.jpg",
-    title: "Pure Ghee & Paneer",
-    subtitle: "Made the traditional way, no preservatives",
+    image: "https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=1200",
+    badge: "🧀 Handcrafted Quality",
+    title: "Pure Paneer & Cheese",
+    subtitle: "Made fresh daily with no preservatives added",
+    cta: "Explore Now",
   },
   {
-    image: "/src/assets/images/slide3.jpg",
-    title: "Flat 20% Off",
-    subtitle: "On your first order this week",
+    image: "https://images.unsplash.com/photo-1631206723958-b0b39d5f0e3e?w=1200",
+    badge: "🫙 Traditional Recipe",
+    title: "Golden Pure Cow Ghee",
+    subtitle: "Rich aroma, traditionally prepared for authentic taste",
+    cta: "Shop Ghee",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=1200",
+    badge: "🍦 Limited Time Offer",
+    title: "Flat 20% Off Ice Creams",
+    subtitle: "Cool down this season with our creamy delights",
+    cta: "Grab The Deal",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1200",
+    badge: "🌱 100% Organic",
+    title: "Organic Dairy Collection",
+    subtitle: "Certified organic products for a healthier lifestyle",
+    cta: "Go Organic",
   },
 ];
 
 function Carousel() {
   const [current, setCurrent] = useState(0);
 
-  // Auto-slide every 4 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 4000);
+    }, 4500);
     return () => clearInterval(timer);
   }, []);
 
-  // Move to a specific slide (used by dots)
-  const goToSlide = (index) => {
-    setCurrent(index);
-  };
-
-  // Move to previous slide
-  const goToPrev = () => {
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  // Move to next slide
-  const goToNext = () => {
-    setCurrent((prev) => (prev + 1) % slides.length);
-  };
+  const goToSlide = (index) => setCurrent(index);
+  const goToPrev = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  const goToNext = () => setCurrent((prev) => (prev + 1) % slides.length);
 
   return (
-    <section className="carousel">
-      <div className="carousel-track">
+    <section className="hero-carousel">
+      <div className="hero-track">
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={index === current ? "carousel-slide active" : "carousel-slide"}
+            className={index === current ? "hero-slide active" : "hero-slide"}
           >
             <img src={slide.image} alt={slide.title} />
-            <div className="carousel-overlay">
-              <h2>{slide.title}</h2>
-              <p>{slide.subtitle}</p>
+            <div className="hero-slide-overlay">
+              <div className="hero-slide-content">
+                <span className="hero-slide-badge">{slide.badge}</span>
+                <h1>{slide.title}</h1>
+                <p>{slide.subtitle}</p>
+                <Link to="/products" className="hero-slide-btn">
+                  {slide.cta}
+                </Link>
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Prev / Next arrows */}
-      <button className="carousel-arrow arrow-left" onClick={goToPrev} aria-label="Previous slide">
+      <button className="hero-arrow hero-arrow-left" onClick={goToPrev} aria-label="Previous">
         ‹
       </button>
-      <button className="carousel-arrow arrow-right" onClick={goToNext} aria-label="Next slide">
+      <button className="hero-arrow hero-arrow-right" onClick={goToNext} aria-label="Next">
         ›
       </button>
 
-      {/* Dots */}
-      <div className="carousel-dots">
+      <div className="hero-dots">
         {slides.map((_, index) => (
           <span
             key={index}
-            className={index === current ? "dot active" : "dot"}
+            className={index === current ? "hero-dot active" : "hero-dot"}
             onClick={() => goToSlide(index)}
           ></span>
         ))}

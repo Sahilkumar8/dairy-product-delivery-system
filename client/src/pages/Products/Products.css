@@ -16,7 +16,7 @@
 .products-header h2 {
   font-size: 28px;
   font-weight: 800;
-  color: #1e293b;
+  color: #064e3b;
   margin: 0 0 6px;
 }
 
@@ -33,7 +33,7 @@
 
 .products-search {
   padding: 10px 16px;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid #d1fae5;
   border-radius: 10px;
   font-size: 14px;
   outline: none;
@@ -42,12 +42,12 @@
 }
 
 .products-search:focus {
-  border-color: #2563eb;
+  border-color: #10b981;
 }
 
 .products-sort {
   padding: 10px 14px;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid #d1fae5;
   border-radius: 10px;
   font-size: 14px;
   outline: none;
@@ -73,18 +73,14 @@
     flex-direction: column;
     align-items: flex-start;
   }
-
   .products-controls {
     width: 100%;
     flex-direction: column;
   }
-
-  .products-search,
-  .products-sort {
+  .products-search, .products-sort {
     width: 100%;
     box-sizing: border-box;
   }
-
   .products-grid {
     justify-content: center;
   }

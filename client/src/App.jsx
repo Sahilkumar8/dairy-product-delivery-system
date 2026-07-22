@@ -9,13 +9,14 @@ import Products from "./pages/Products/Products";
 import Cart from "./pages/Cart/Cart";
 import Orders from "./pages/Orders/Orders";
 import Admin from "./pages/Admin/Admin";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
 import "./App.css";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
 
-  // Fetch all products once, so Home can show a "Featured" slice of them
   useEffect(() => {
     fetch("http://localhost:5000/api/products")
       .then((res) => res.json())
@@ -48,24 +49,25 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={
-            <Home featuredProducts={allProducts} onAddToCart={handleAddToCart} />
-          }
+          element={<Home featuredProducts={allProducts} onAddToCart={handleAddToCart} />}
         />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route
-          path="/products"
-          element={<Products onAddToCart={handleAddToCart} />}
-        />
+  path="/products"
+  element={
+    <Products
+      allProducts={allProducts}
+      onAddToCart={handleAddToCart}
+    />
+  }
+/>
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route
           path="/cart"
           element={
-            <Cart
-              cartItems={cartItems}
-              onRemove={handleRemove}
-              onCheckout={handleCheckout}
-            />
+            <Cart cartItems={cartItems} onRemove={handleRemove} onCheckout={handleCheckout} />
           }
         />
         <Route path="/orders" element={<Orders />} />
