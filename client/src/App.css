@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #1e293b;
+  background-color: #ffffff;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+.btn {
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
+  border: none;
+}
+
+.btn-outline {
+  color: #059669;
+  border: 1.5px solid #10b981;
+  background-color: transparent;
+}
+
+.btn-outline:hover {
+  background-color: #ecfdf5;
+}
+
+.btn-filled {
+  color: #ffffff;
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  border: 1.5px solid transparent;
+}
+
+.btn-filled:hover {
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
+}

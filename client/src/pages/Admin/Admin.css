@@ -1,0 +1,107 @@
+.admin-page {
+  min-height: calc(100vh - 75px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc;
+  padding: 40px 20px;
+}
+
+.admin-card {
+  width: 100%;
+  max-width: 480px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+.admin-card h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 6px;
+}
+
+.admin-subtext {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0 0 26px;
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-row {
+  display: flex;
+  gap: 14px;
+}
+
+.input-row .input-group {
+  flex: 1;
+}
+
+.input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  border-color: #2563eb;
+}
+
+.auth-btn {
+  width: 100%;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.auth-btn:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+.auth-btn:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+.admin-message {
+  margin-top: 16px;
+  font-size: 13.5px;
+  color: #16a34a;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .admin-card {
+    padding: 28px 22px;
+  }
+
+  .input-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
